@@ -2,8 +2,12 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 ?><!DOCTYPE html>
 <html lang="en">
+	
 <head>
 	<meta charset="utf-8">
+	<link rel="stylesheet" href="<?php echo base_url("assets/bower_components/bootstrap/dist/css/bootstrap.min.css"); ?>" />
+	<script type="text/javascript" src="<?php echo base_url("assets/bower_components/jquery/dist/jquery.min.js"); ?>"></script>
+	<script type="text/javascript" src="<?php echo base_url("assets/bower_components/bootstrap/dist/js/bootstrap.min.js"); ?>"></script>
 	<title>Welcome to CodeIgniter</title>
 
 	<style type="text/css">
