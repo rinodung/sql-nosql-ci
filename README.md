@@ -3,14 +3,17 @@ Xây dựng 1 CSDL, viết chương trình so sánh chi phí thời gian thực 
 
 1. SQL (SQL server)
 
-2. NoSQL (cặp khóa - giá trị)
+2. NoSQL (cặp khóa - giá trị): Redis, MemcacheDB
 
-3. NoSQL(hướng tài liệu)
+3. NoSQL(hướng tài liệu): MongoDB, Couchbase
 
-4. NoSQL(hướng cột)
+4. NoSQL(hướng cột): Cassandra, HBase(Hadoop)
 
-5. NoSQL(đồ thị)
+5. NoSQL(đồ thị): OrientDB, Neo4J
 
+http://nosql-database.org/
+
+https://www.digitalocean.com/community/tutorials/a-comparison-of-nosql-database-management-systems-and-models
 # Ngôn ngữ
 PHP
 
@@ -24,13 +27,13 @@ https://codeigniter.com/user_guide/
 
 1. SQL: SQL server
 
-2. NoSQL (cặp khóa - giá trị): 
+2. NoSQL (cặp khóa - giá trị): Redis, MemcacheDB
 
-3. NoSQL(hướng tài liệu): MongoDB
+3. NoSQL(hướng tài liệu): MongoDB, Couchbase
 
-4. NoSQL(hướng cột):
+4. NoSQL(hướng cột): Cassandra, HBase(Hadoop)
 
-5. NoSQL(đồ thị):
+5. NoSQL(đồ thị): OrientDB, Neo4J
 
 
 
