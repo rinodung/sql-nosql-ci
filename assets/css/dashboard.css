@@ -103,3 +103,16 @@ body {
   display: inline-block;
   border-radius: 50%;
 }
+.placeholder .placeholder-span {
+  display: inline-block;
+  border-radius: 50%;
+  width: 200px;
+  height: 200px;
+}
+.placeholder .placeholder-span.connected {
+  background: #00AA88;
+}
+
+.placeholder .placeholder-span.disconnected {
+  background: #b92c28;
+}

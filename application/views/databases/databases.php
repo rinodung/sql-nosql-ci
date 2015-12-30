@@ -62,7 +62,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
       <div class="row">
         <div class="col-sm-3 col-md-2 sidebar">
           <ul class="nav nav-sidebar">
-            <li class="active"><a href="#">Overview <span class="sr-only">(current)</span></a></li>
+            <li class="active"><a href="<?php echo base_url(); ?> ">Databases <span class="sr-only">(current)</span></a></li>
             <li><a href="#">Reports</a></li>
             <li><a href="#">Analytics</a></li>
             <li><a href="#">Export</a></li>
@@ -81,29 +81,25 @@ defined('BASEPATH') OR exit('No direct script access allowed');
           </ul>
         </div>
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-          <h1 class="page-header">Dashboard</h1>
+          <h1 class="page-header">Databases</h1>
 
           <div class="row placeholders">
             <div class="col-xs-6 col-sm-3 placeholder">
-              <img src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" width="200" height="200" class="img-responsive" alt="Generic placeholder thumbnail">
-              <h4>Label</h4>
-              <span class="text-muted">Something else</span>
+              <a href="<?php echo base_url('databases/edit/mysql') ?>">
+                <span class="placeholder-span <?php echo $mysql->conn_id ?  "connected" : "disconnected" ?>"></span>
+              </a>
+              <h4>SQL</h4>
+              <span class="text-muted"><?php echo $mysql->conn_id ?  "Connected" : "Disconnected" ?></span>
             </div>
+
             <div class="col-xs-6 col-sm-3 placeholder">
-              <img src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" width="200" height="200" class="img-responsive" alt="Generic placeholder thumbnail">
-              <h4>Label</h4>
-              <span class="text-muted">Something else</span>
+              <a href="<?php echo base_url('databases/edit/mongodb') ?>">
+              <span class="placeholder-span <?php echo $mongodb->conn_id ?  "connected" : "disconnected" ?>"></span>
+              </a>
+              <h4>MONGODB</h4>
+              <span class="text-muted"><?php echo $mongodb->conn_id ?  "Connected" : "Disconnected" ?></span>
             </div>
-            <div class="col-xs-6 col-sm-3 placeholder">
-              <img src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" width="200" height="200" class="img-responsive" alt="Generic placeholder thumbnail">
-              <h4>Label</h4>
-              <span class="text-muted">Something else</span>
-            </div>
-            <div class="col-xs-6 col-sm-3 placeholder">
-              <img src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" width="200" height="200" class="img-responsive" alt="Generic placeholder thumbnail">
-              <h4>Label</h4>
-              <span class="text-muted">Something else</span>
-            </div>
+
           </div>
 
           <h2 class="sub-header">Section title</h2>
