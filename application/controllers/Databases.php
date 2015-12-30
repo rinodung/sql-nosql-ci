@@ -24,11 +24,15 @@ class Databases extends CI_Controller {
 		$mysql = $this->load->database('mysql', TRUE);
 		$mongoDb = $this->load->database('mongodb', TRUE);
 
-
-
 		$data = array("mongodb" => $mongoDb, "mysql" => $mysql);
 
 		$this->load->helper('url');
-		$this->load->view('dashboard', $data);
+		$this->load->view('databases/databases', $data);
+	}
+	public function edit($name) {
+		$data = array();
+		$data["name"] = $name;
+		$this->load->helper('url');
+		$this->load->view('databases/edit-databases', $data);
 	}
 }
