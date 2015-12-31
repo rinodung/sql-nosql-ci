@@ -94,7 +94,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
             <div class="col-xs-6 col-sm-3 placeholder">
               <a href="<?php echo base_url('databases/edit/mongodb') ?>">
-              <span class="placeholder-span <?php echo $mongodb->conn_id ?  "connected" : "disconnected" ?>"></span>
+              <span class="placeholder-span <?php echo $this->mongo_db->connect()->connected ?  "connected" : "disconnected" ?>"></span>
               </a>
               <h4>MONGODB</h4>
               <span class="text-muted"><?php echo $mongodb->conn_id ?  "Connected" : "Disconnected" ?></span>

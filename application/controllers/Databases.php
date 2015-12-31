@@ -22,7 +22,8 @@ class Databases extends CI_Controller {
 	{
 
 		$mysql = $this->load->database('mysql', TRUE);
-		$mongoDb = $this->load->database('mongodb', TRUE);
+		$mongoDb = $this->load->library("");
+		
 
 		$data = array("mongodb" => $mongoDb, "mysql" => $mysql);
 
