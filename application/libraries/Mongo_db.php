@@ -20,7 +20,7 @@ Class Mongo_db{
 	private $config = array();
 	private $param = array();
 	private $activate;
-	private $connect;
+	public  $connect;
 	private $db;
 	private $hostname;
 	private $port;
@@ -37,7 +37,7 @@ Class Mongo_db{
 	private $offset	= 0;
 	private $sorts	= array();
 	private $return_as = 'array';
-
+	public $connected = fale;
 	/**
 	* --------------------------------------------------------------------------------
 	* Class Constructor
@@ -55,7 +55,8 @@ Class Mongo_db{
 
 		if ( ! class_exists('Mongo') && ! class_exists('MongoClient'))
 		{
-			show_error("The MongoDB PECL extension has not been installed or enabled", 500);
+			//show_error("The MongoDB PECL extension has not been installed or enabled", 500);
+			return null;
 		}
 		$this->CI =& get_instance();
 		$this->CI->load->config('mongo_db');
@@ -219,13 +220,15 @@ Class Mongo_db{
 		}
 		catch (MongoConnectionException $e)
 		{
+
 			if(isset($this->debug) == TRUE && $this->debug == TRUE)
 			{
-				show_error("Unable to connect to MongoDB: {$e->getMessage()}", 500);
+				//show_error("Unable to connect to MongoDB: {$e->getMessage()}", 500);
 			}
 			else
 			{
-				show_error("Unable to connect to MongoDB", 500);
+				return null;
+				//show_error("Unable to connect to MongoDB", 500);
 			}
 		}
 	}
