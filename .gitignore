@@ -27,3 +27,6 @@ user_guide_src/cilexer/pycilexer.egg-info/*
 *.stTheme.cache
 *.sublime-workspace
 *.sublime-project
+
+#add file VinhReadMe.txt vao git ignore de no k push len server
+VinhReadMe.txt
