@@ -84,32 +84,34 @@ defined('BASEPATH') OR exit('No direct script access allowed');
           </div>
 
           <h2 class="sub-header">Action</h2>
-          <div id="action">
+          <div  id="action">
+
             <!-- Nav tabs -->
             <ul class="nav nav-tabs" role="tablist">
-              <li class="active" ><a href="<?php echo base_url('databases/index') ?>">Select</a></li>
-              <li><a href="<?php echo base_url('databases/insert') ?>">Insert</a></li>
+              <li><a href="<?php echo base_url('databases/index') ?>">Select</a></li>
+              <li  class="active"><a href="<?php echo base_url('databases/insert') ?>">Insert</a></li>
               <li><a href="<?php echo base_url('databases/update') ?>">Update</a></li>
               <li><a href="<?php echo base_url('databases/delete') ?>">Delete</a></li>
             </ul>
 
             <!-- Tab panes -->
             <div class="tab-content">
-              <div role="tabpanel" class="tab-pane active" id="select" style="padding: 10px;">
+              <div role="tabpanel" class="tab-pane" id="select" style="padding: 10px;">
+                
+              </div><!--end tab Select -->
+              <div role="tabpanel" class="tab-pane active" id="insert" style="padding: 10px;">
                 <div id="form">
                   <h3>Parameter</h3>
                   <form class="form-inline" method="POST">
                     <div class="form-group">
                       <label for="exampleInputName2">Records</label>
-                      <input type="text" class="form-control" name="record" title="Number of record you want to select" value="<?php echo isset($_POST['record']) ? $_POST['record']: 100?>" placeholder="Number of record you want to select">
+                      <input type="text" class="form-control" name="record" title="Number of record you want to insert" value="<?php echo isset($_POST['record']) ? $_POST['record']: 100?>" placeholder="Number of record you want to insert">
                     </div>
-                    <input type="hidden" name="action" value="select">
+                    <input type="hidden" name="action" value="insert">
                     <button type="submit" class="btn btn-default" title="start to execute">Go</button>
                   </form>
                 </div><!--end #form -->
-
-                <?php if(!empty($result)) {?>
-                
+                <?php if(!empty($result)) {?>                
                 <div id="result" >                 
                   <h3>Result</h3>
                     <!-- Nav tabs -->
@@ -135,13 +137,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                           ?>
                         </pre>
                       </div>                    
-                    </div>
-                 
+                    </div>                 
                 </div><!--end result -->
                 <?php } ?>
-              </div><!--end tab Select -->
-              <div role="tabpanel" class="tab-pane" id="insert" style="padding: 10px;">              
-                
               </div>
               <div role="tabpanel" class="tab-pane" id="update">...</div>
               <div role="tabpanel" class="tab-pane" id="delete">...</div>
@@ -155,10 +153,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <script src="<?php echo base_url('assets/js/vendor/holder.min.js');?>"></script>
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
     <script src="<?php echo base_url('assets/js/ie10-viewport-bug-workaround.js'); ?>"></script>
+
     <?php if(!empty($_POST)) {?>
     <script src="<?php echo base_url('assets/js/main.js'); ?>"></script>
 
     <?php } ?>
-    
   </body>
 </html>

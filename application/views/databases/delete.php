@@ -16,8 +16,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <?php echo base_url(); ?>
     <!-- Bootstrap core CSS -->
     <link rel="stylesheet" href="<?php echo base_url('assets/bower_components/bootstrap/dist/css/bootstrap.min.css'); ?>" />
-	  <script type="text/javascript" src="<?php echo base_url('assets/bower_components/jquery/dist/jquery.min.js'); ?>"></script>
-	  <script type="text/javascript" src="<?php echo base_url('assets/bower_components/bootstrap/dist/js/bootstrap.min.js'); ?>"></script>
+    <script type="text/javascript" src="<?php echo base_url('assets/bower_components/jquery/dist/jquery.min.js'); ?>"></script>
+    <script type="text/javascript" src="<?php echo base_url('assets/bower_components/bootstrap/dist/js/bootstrap.min.js'); ?>"></script>
 
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
     <link href="<?php echo base_url('assets/css/ie10-viewport-bug-workaround.css'); ?>" rel="stylesheet">
@@ -85,31 +85,39 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
           <h2 class="sub-header">Action</h2>
           <div id="action">
+
             <!-- Nav tabs -->
             <ul class="nav nav-tabs" role="tablist">
-              <li class="active" ><a href="<?php echo base_url('databases/index') ?>">Select</a></li>
+              <li><a href="<?php echo base_url('databases/index') ?>">Select</a></li>
               <li><a href="<?php echo base_url('databases/insert') ?>">Insert</a></li>
               <li><a href="<?php echo base_url('databases/update') ?>">Update</a></li>
-              <li><a href="<?php echo base_url('databases/delete') ?>">Delete</a></li>
+              <li  class="active"><a href="<?php echo base_url('databases/delete') ?>">Delete</a></li>
             </ul>
 
             <!-- Tab panes -->
             <div class="tab-content">
-              <div role="tabpanel" class="tab-pane active" id="select" style="padding: 10px;">
+              <div role="tabpanel" class="tab-pane" id="select" style="padding: 10px;">
+                
+              </div><!--end tab Select -->
+              <div role="tabpanel" class="tab-pane" d="insert" style="padding: 10px;">
+                
+              </div>
+              <div role="tabpanel" class="tab-pane" id="update">
+                
+              </div>
+              <div role="tabpanel" class="tab-pane  active" id="delete">
                 <div id="form">
                   <h3>Parameter</h3>
                   <form class="form-inline" method="POST">
                     <div class="form-group">
                       <label for="exampleInputName2">Records</label>
-                      <input type="text" class="form-control" name="record" title="Number of record you want to select" value="<?php echo isset($_POST['record']) ? $_POST['record']: 100?>" placeholder="Number of record you want to select">
+                      <input type="text" class="form-control" name="record" title="Number of record you want to delete" value="<?php echo isset($_POST['record']) ? $_POST['record']: 100?>" placeholder="Number of record you want to insert">
                     </div>
-                    <input type="hidden" name="action" value="select">
+                    <input type="hidden" name="action" value="delete">
                     <button type="submit" class="btn btn-default" title="start to execute">Go</button>
                   </form>
                 </div><!--end #form -->
-
-                <?php if(!empty($result)) {?>
-                
+                <?php if(!empty($result)) {?>                
                 <div id="result" >                 
                   <h3>Result</h3>
                     <!-- Nav tabs -->
@@ -135,16 +143,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                           ?>
                         </pre>
                       </div>                    
-                    </div>
-                 
+                    </div>                 
                 </div><!--end result -->
                 <?php } ?>
-              </div><!--end tab Select -->
-              <div role="tabpanel" class="tab-pane" id="insert" style="padding: 10px;">              
-                
               </div>
-              <div role="tabpanel" class="tab-pane" id="update">...</div>
-              <div role="tabpanel" class="tab-pane" id="delete">...</div>
             </div>
 
           </div>
@@ -155,10 +157,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <script src="<?php echo base_url('assets/js/vendor/holder.min.js');?>"></script>
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
     <script src="<?php echo base_url('assets/js/ie10-viewport-bug-workaround.js'); ?>"></script>
+
     <?php if(!empty($_POST)) {?>
     <script src="<?php echo base_url('assets/js/main.js'); ?>"></script>
 
     <?php } ?>
-    
   </body>
 </html>

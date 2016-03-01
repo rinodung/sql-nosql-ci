@@ -18,8 +18,8 @@ class Databases extends CI_Controller {
 	 * map to /index.php/welcome/<method_name>
 	 * @see http://codeigniter.com/user_guide/general/urls.html
 	 */
-	public function index()
-	{
+	public function index()	{
+		$this->load->helper('url');
 
 		$result = array();
 		if(!empty($_POST)) {
@@ -28,7 +28,8 @@ class Databases extends CI_Controller {
 			$this->load->model('users');
 			$table = "users";
 			$num = $_POST["record"];
-			$result = $this->users->select($table, $num);
+			$result = $this->users->select($table, $num);			
+			
 		}
 
 		$mysql = $this->load->database('mysql', TRUE);
@@ -39,6 +40,78 @@ class Databases extends CI_Controller {
 
 		$this->load->helper('url');
 		$this->load->view('databases/databases', $data);
+	}
+
+	public function insert() {
+		$this->load->helper('url');
+
+		$result = array();
+		if(!empty($_POST)) {
+			$this->output->enable_profiler(TRUE);
+			$this->load->database();
+			$this->load->model('users');
+			$table = "users";
+			$num = $_POST["record"];
+			$result = $this->users->insert($table, $num);			
+			
+		}
+
+		$mysql = $this->load->database('mysql', TRUE);
+		$this->load->library("Mongo_db");
+		$mongoDb = $this->mongo_db;
+
+		$data = array("mongodb" => $mongoDb, "mysql" => $mysql, "result" => $result);
+
+		$this->load->helper('url');
+		$this->load->view('databases/insert', $data);
+	}
+
+	public function update() {
+		$this->load->helper('url');
+
+		$result = array();
+		if(!empty($_POST)) {
+			$this->output->enable_profiler(TRUE);
+			$this->load->database();
+			$this->load->model('users');
+			$table = "users";
+			$num = $_POST["record"];
+			$result = $this->users->update($table, $num);			
+			
+		}
+
+		$mysql = $this->load->database('mysql', TRUE);
+		$this->load->library("Mongo_db");
+		$mongoDb = $this->mongo_db;
+
+		$data = array("mongodb" => $mongoDb, "mysql" => $mysql, "result" => $result);
+
+		$this->load->helper('url');
+		$this->load->view('databases/update', $data);
+	}
+
+	public function delete() {
+		$this->load->helper('url');
+
+		$result = array();
+		if(!empty($_POST)) {
+			$this->output->enable_profiler(TRUE);
+			$this->load->database();
+			$this->load->model('users');
+			$table = "users";
+			$num = $_POST["record"];
+			$result = $this->users->delete($table, $num);			
+			
+		}
+
+		$mysql = $this->load->database('mysql', TRUE);
+		$this->load->library("Mongo_db");
+		$mongoDb = $this->mongo_db;
+
+		$data = array("mongodb" => $mongoDb, "mysql" => $mysql, "result" => $result);
+
+		$this->load->helper('url');
+		$this->load->view('databases/delete', $data);
 	}
 
 	public function edit($name) {
