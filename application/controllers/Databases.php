@@ -21,15 +21,26 @@ class Databases extends CI_Controller {
 	public function index()
 	{
 
+		$result = array();
+		if(!empty($_POST)) {
+			$this->output->enable_profiler(TRUE);
+			$this->load->database();
+			$this->load->model('users');
+			$table = "users";
+			$num = $_POST["record"];
+			$result = $this->users->select($table, $num);
+		}
+
 		$mysql = $this->load->database('mysql', TRUE);
 		$this->load->library("Mongo_db");
 		$mongoDb = $this->mongo_db;
 
-		$data = array("mongodb" => $mongoDb, "mysql" => $mysql);
+		$data = array("mongodb" => $mongoDb, "mysql" => $mysql, "result" => $result);
 
 		$this->load->helper('url');
 		$this->load->view('databases/databases', $data);
 	}
+
 	public function edit($name) {
 		$data = array();
 		$data["name"] = $name;
