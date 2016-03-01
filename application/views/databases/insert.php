@@ -128,7 +128,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     <!-- Tab panes -->
                     <div class="tab-content">
                       <div role="tabpanel" class="tab-pane active" id="result-time">
-                        <?php echo $result['time']; ?>
+                        <?php echo $result['time']; ?>(sec) 
                       </div>
                       <div role="tabpanel" class="tab-pane" id="result-log">
                         <pre>
