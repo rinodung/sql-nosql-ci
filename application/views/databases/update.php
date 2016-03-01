@@ -62,6 +62,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
       <div class="row">
 
         <div class="col-sm-12 col-md-12 main">
+          <h1 data-toggle="collapse" data-target="#server-info">Server Information</h1>
+          <div id="server-info" class="collapse">
+            Server: <?php echo $_SERVER['SERVER_NAME'];?>
+          </div>
+          
+
           <h1 class="page-header">Databases</h1>
 
           <div class="row placeholders">
