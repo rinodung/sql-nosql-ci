@@ -51,4 +51,12 @@ https://codeigniter.com/user_guide/
 6. Run Xampp and access: http://dev.sql-nosql-ci.com/
 
 
-
+# How to Run
+1. Set max_execution_time=300000 in php.ini
+2. Set memory_limit=-1
+3. Install MongoDB https://www.mongodb.org/downloads?_ga=1.64492399.1718628405.1456847965#production
+4. Install dll library for MongoDB on Windows https://pecl.php.net/package/mongo
+5. Copy version.dll to driver and enable extension=mongo_db.dll
+6. Run mongoDB with command line: mongod
+7. Start Xampp (copy the libsasl.dll found in my php installation directory to the apache installation directory )
+ 

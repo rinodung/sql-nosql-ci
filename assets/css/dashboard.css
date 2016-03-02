@@ -116,3 +116,8 @@ body {
 .placeholder .placeholder-span.disconnected {
   background: #b92c28;
 }
+
+
+#waiting-progress {
+  margin-top: 10px;
+}

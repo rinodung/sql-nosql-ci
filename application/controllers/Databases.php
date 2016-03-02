@@ -21,10 +21,13 @@ class Databases extends CI_Controller {
 	public function index()	{
 		$this->load->helper('url');
 
+		$this->load->database('mysql');
+		$this->load->library("Mongo_db");
+		
+
 		$result = array();
-		if(!empty($_POST)) {
-			$this->output->enable_profiler(TRUE);
-			$this->load->database();
+		if(!empty($_POST)) {	
+			
 			$this->load->model('users');
 			$table = "users";
 			$num = $_POST["record"];
@@ -32,11 +35,21 @@ class Databases extends CI_Controller {
 			
 		}
 
-		$mysql = $this->load->database('mysql', TRUE);
-		$this->load->library("Mongo_db");
-		$mongoDb = $this->mongo_db;
+		if($this->db->conn_id) {
+			$sqlStatus = true;
+		} else {
+			$sqlStatus = false;
+		}
 
-		$data = array("mongodb" => $mongoDb, "mysql" => $mysql, "result" => $result);
+		if(isset($this->mongo_db->connect->connected) && $this->mongo_db->connect->connected) {
+			$mongoDbStatus = true;
+		} else {
+			$mongoDbStatus = false;
+		}
+		
+
+		$data = array("mongoDbStatus" => $mongoDbStatus, 
+			"sqlStatus" => $sqlStatus, "result" => $result);
 
 		$this->load->helper('url');
 		$this->load->view('databases/databases', $data);
@@ -45,10 +58,10 @@ class Databases extends CI_Controller {
 	public function insert() {
 		$this->load->helper('url');
 
+		$this->load->database('mysql');
+		$this->load->library("Mongo_db");
 		$result = array();
 		if(!empty($_POST)) {
-			$this->output->enable_profiler(TRUE);
-			$this->load->database();
 			$this->load->model('users');
 			$table = "users";
 			$num = $_POST["record"];
@@ -56,11 +69,22 @@ class Databases extends CI_Controller {
 			
 		}
 
-		$mysql = $this->load->database('mysql', TRUE);
-		$this->load->library("Mongo_db");
-		$mongoDb = $this->mongo_db;
+		if($this->db->conn_id) {
+			$sqlStatus = true;
+		} else {
+			$sqlStatus = false;
+		}
 
-		$data = array("mongodb" => $mongoDb, "mysql" => $mysql, "result" => $result);
+		if(isset($this->mongo_db->connect->connected) && $this->mongo_db->connect->connected) {
+			$mongoDbStatus = true;
+		} else {
+			$mongoDbStatus = false;
+		}
+		
+
+		$data = array("mongoDbStatus" => $mongoDbStatus, 
+			"sqlStatus" => $sqlStatus, "result" => $result);
+
 
 		$this->load->helper('url');
 		$this->load->view('databases/insert', $data);
@@ -68,10 +92,12 @@ class Databases extends CI_Controller {
 
 	public function update() {
 		$this->load->helper('url');
+		$this->load->database('mysql');
+		$this->load->library("Mongo_db");
 
 		$result = array();
 		if(!empty($_POST)) {
-			$this->output->enable_profiler(TRUE);
+			
 			$this->load->database();
 			$this->load->model('users');
 			$table = "users";
@@ -80,11 +106,21 @@ class Databases extends CI_Controller {
 			
 		}
 
-		$mysql = $this->load->database('mysql', TRUE);
-		$this->load->library("Mongo_db");
-		$mongoDb = $this->mongo_db;
+		if($this->db->conn_id) {
+			$sqlStatus = true;
+		} else {
+			$sqlStatus = false;
+		}
 
-		$data = array("mongodb" => $mongoDb, "mysql" => $mysql, "result" => $result);
+		if(isset($this->mongo_db->connect->connected) && $this->mongo_db->connect->connected) {
+			$mongoDbStatus = true;
+		} else {
+			$mongoDbStatus = false;
+		}
+		
+
+		$data = array("mongoDbStatus" => $mongoDbStatus, 
+			"sqlStatus" => $sqlStatus, "result" => $result);
 
 		$this->load->helper('url');
 		$this->load->view('databases/update', $data);
@@ -92,10 +128,12 @@ class Databases extends CI_Controller {
 
 	public function delete() {
 		$this->load->helper('url');
-
+		$this->load->database('mysql');
+		$this->load->library("Mongo_db");
+		
 		$result = array();
 		if(!empty($_POST)) {
-			$this->output->enable_profiler(TRUE);
+			
 			$this->load->database();
 			$this->load->model('users');
 			$table = "users";
@@ -104,11 +142,21 @@ class Databases extends CI_Controller {
 			
 		}
 
-		$mysql = $this->load->database('mysql', TRUE);
-		$this->load->library("Mongo_db");
-		$mongoDb = $this->mongo_db;
+		if($this->db->conn_id) {
+			$sqlStatus = true;
+		} else {
+			$sqlStatus = false;
+		}
 
-		$data = array("mongodb" => $mongoDb, "mysql" => $mysql, "result" => $result);
+		if(isset($this->mongo_db->connect->connected) && $this->mongo_db->connect->connected) {
+			$mongoDbStatus = true;
+		} else {
+			$mongoDbStatus = false;
+		}
+		
+
+		$data = array("mongoDbStatus" => $mongoDbStatus, 
+			"sqlStatus" => $sqlStatus, "result" => $result);
 
 		$this->load->helper('url');
 		$this->load->view('databases/delete', $data);

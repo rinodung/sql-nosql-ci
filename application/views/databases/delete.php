@@ -72,21 +72,21 @@ defined('BASEPATH') OR exit('No direct script access allowed');
           <div class="row placeholders">
             <div class="col-xs-6 col-sm-3 placeholder">
               <a href="<?php echo base_url('databases/edit/mysql') ?>">
-                <span class="placeholder-span <?php echo $mysql->conn_id ?  "connected" : "disconnected" ?>"></span>
+                <span class="placeholder-span <?php echo $sqlStatus ?  "connected" : "disconnected" ?>"></span>
               </a>
               <h4>SQL</h4>
-              <span class="text-muted"><?php echo $mysql->conn_id ?  "Connected" : "Disconnected" ?></span>
-            </div>
+              <span class="text-muted"><?php echo $sqlStatus ?  "Connected" : "Disconnected" ?></span>
+            </div> 
 
             <div class="col-xs-6 col-sm-3 placeholder">
               <a href="<?php echo base_url('databases/edit/mongodb') ?>">
-              <span class="placeholder-span <?php echo (isset($this->mongo_db->connect->connected) && $this->mongo_db->connect->connected) ?  "connected" : "disconnected" ?>"></span>
+              <span class="placeholder-span <?php echo $mongoDbStatus ?  "connected" : "disconnected" ?>"></span>
               </a>
               <h4>MONGODB</h4>
-              <span class="text-muted"><?php echo isset($this->mongo_db->connect->connected) && $this->mongo_db->connect->connected ?  "Connected" : "Disconnected" ?></span>
+              <span class="text-muted"><?php echo $mongoDbStatus ?  "Connected" : "Disconnected" ?></span>
             </div>
 
-          </div>
+          </div><!--End placeholder -->
 
           <h2 class="sub-header">Action</h2>
           <div id="action">
@@ -104,23 +104,31 @@ defined('BASEPATH') OR exit('No direct script access allowed');
               <div role="tabpanel" class="tab-pane" id="select" style="padding: 10px;">
                 
               </div><!--end tab Select -->
-              <div role="tabpanel" class="tab-pane" d="insert" style="padding: 10px;">
+              <div role="tabpanel" class="tab-pane" d="insert" >
                 
               </div>
               <div role="tabpanel" class="tab-pane" id="update">
                 
               </div>
-              <div role="tabpanel" class="tab-pane  active" id="delete">
-                <div id="form">
-                  <h3>Parameter</h3>
+              <div role="tabpanel" class="tab-pane  active" id="delete" style="padding: 10px;">
+                <div id="form">                  
                   <form class="form-inline" method="POST">
                     <div class="form-group">
                       <label for="exampleInputName2">Records</label>
                       <input type="text" class="form-control" name="record" title="Number of record you want to delete" value="<?php echo isset($_POST['record']) ? $_POST['record']: 100?>" placeholder="Number of record you want to insert">
                     </div>
                     <input type="hidden" name="action" value="delete">
-                    <button type="submit" class="btn btn-default" title="start to execute">Go</button>
+                    <button type="submit" class="btn btn-default" title="start to execute"
+                    data-toggle="collapse" data-target="#waiting-progress">Go</button>
                   </form>
+
+                  <div class="progress collapse" id="waiting-progress">
+                    <div class="progress-bar progress-bar-info progress-bar-striped active" role="progressbar" 
+                    aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%">
+                      waiting...
+                    </div>
+                  </div><!--end waiting progress bar-->
+
                 </div><!--end #form -->
                 <?php if(!empty($result)) {?>                
                 <div id="result" >                 
@@ -139,7 +147,24 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     <!-- Tab panes -->
                     <div class="tab-content">
                       <div role="tabpanel" class="tab-pane active" id="result-time">
-                        <?php echo $result['time']; ?>(sec) 
+                        <p>SQL: <?php echo $result['sql']['time']; ?>(sec) </p>                        
+
+                        <div class="progress">
+                          <div class="progress-bar progress-bar-success" role="progressbar"
+                           aria-valuenow="<?php echo $result['sql']['time']; ?>" aria-valuemin="0"
+                           aria-valuemax="<?php echo $result['sql']['time']; ?>"
+                           style="width: <?php echo 100 * ($result['sql']['time']/$result['nosql']['time'])?>%">
+                            <?php echo $result['sql']['time']; ?>(sec)
+                          </div>
+                        </div>
+                        <p>NOSQL: <?php echo $result['nosql']['time']; ?>(sec) </p>
+                        <div class="progress">
+                          <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="<?php echo $result['nosql']['time']; ?>" 
+                          aria-valuemin="0" aria-valuemax="<?php echo $result['sql']['time']; ?>"
+                          style ="width: 100%">
+                            <?php echo $result['nosql']['time']; ?>(sec)
+                          </div>
+                        </div>
                       </div>
                       <div role="tabpanel" class="tab-pane" id="result-log">
                         <pre>
