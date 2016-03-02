@@ -60,3 +60,10 @@ https://codeigniter.com/user_guide/
 6. Run mongoDB with command line: mongod
 7. Start Xampp (copy the libsasl.dll found in my php installation directory to the apache installation directory )
  
+
+# ServerInfomation
+1. Dell Latitue 6510 Win7 Ram 4Gb CPU core I7 2.8GHz
+2. cat  /proc/cpuinfo
+OS: Ubuntu
+CPU: Intel(R) Xeon(R) CPU @ 2.50GHz
+RAM: 1GB

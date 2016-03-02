@@ -65,6 +65,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
           <h1 data-toggle="collapse" data-target="#server-info">Server Information</h1>
           <div id="server-info" class="collapse">
             Server: <?php echo $_SERVER['SERVER_NAME'];?>
+            <p>Dell Latitue 6510 Win7 Ram 4Gb CPU core I7 2.8GHz</p>
           </div>
           
           <h1 class="page-header">Databases</h1>
